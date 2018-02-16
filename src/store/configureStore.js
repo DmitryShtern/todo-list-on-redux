@@ -8,7 +8,8 @@ export default function configureStore(initialState) {
 
   if (module.hot) {
     module.hot.accept(rootReducer, () => {
-      const nextRootReducer = require(rootReducer)
+      // const nextRootReducer = require(rootReducer) // WARNiNG: 'Critical dependency: the request of a dependency is an expression' when require() has argument instead string
+      const nextRootReducer = require("../reducers")
       store.replaceReducer(nextRootReducer)
     })
   }
