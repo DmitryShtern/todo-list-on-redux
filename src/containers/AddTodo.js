@@ -13,6 +13,7 @@ let AddTodo = ({ dispatch }) => {
           if (!input.value.trim()) {
             return
           }
+
           dispatch(addTodo(input.value))
           input.value = ""
         }}
@@ -22,11 +23,13 @@ let AddTodo = ({ dispatch }) => {
             input = node
           }}
         />
+
         <button type="submit">Add Todo</button>
       </form>
     </div>
   )
 }
+
 AddTodo = connect()(AddTodo)
 
 export default AddTodo

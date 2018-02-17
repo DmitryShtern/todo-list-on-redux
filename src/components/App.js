@@ -3,8 +3,13 @@ import Footer from "./Footer"
 import AddTodo from "../containers/AddTodo"
 import VisibleTodoList from "../containers/VisibleTodoList"
 
+const divStyle = {
+  width: "700px",
+  backgroundColor: "#fafafa",
+}
+
 const App = () => (
-  <div>
+  <div style={divStyle}>
     <AddTodo />
     <VisibleTodoList />
     <Footer />
