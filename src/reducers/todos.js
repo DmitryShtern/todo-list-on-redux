@@ -5,8 +5,6 @@ import {
   TOGGLE_ALL_TODOS,
   DELETE_TODO,
   DELETE_COMPLITED_TODOS,
-  // GET_ACTIVE_TODOS_COUNT,
-  // GET_COMPLETION,
 } from "../constants/todos"
 
 const initialState = [
@@ -27,7 +25,7 @@ const todos = (state = initialState, action) => {
     case ADD_TODO:
       return [
         {
-          id: action.id,
+          id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
           text: action.text,
           completed: false,
         },
@@ -43,16 +41,11 @@ const todos = (state = initialState, action) => {
       )
 
     case TOGGLE_ALL_TODOS:
-      console.log("/reducers/todos.js TOGGLE_ALL_TODOS")
-      return state.map(
-        todo =>
-          todo.completed !== state.completion ? { ...todo, completed: state.completion } : todo,
-      )
-
-    // case GET_COMPLETION:
-    //   return !state.todos.some(todo => {
-    //     return todo.completed === false
-    //   })
+      const areAllMarked = state.every(todo => todo.completed)
+      return state.map(todo => ({
+        ...todo,
+        completed: !areAllMarked,
+      }))
 
     case DELETE_TODO:
       return state.filter(todo => {
@@ -60,7 +53,9 @@ const todos = (state = initialState, action) => {
       })
 
     case DELETE_COMPLITED_TODOS:
-      return state
+      return state.filter(todo => {
+        return todo.completed !== true
+      })
 
     default:
       return state

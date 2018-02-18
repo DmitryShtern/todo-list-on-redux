@@ -17,6 +17,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "react-edit-inline": "^1.0.8",
     "redux-devtools": "^3.4.1"
   }
 }

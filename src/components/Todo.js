@@ -1,19 +1,26 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const Todo = ({ onEdit, onToggle, onDelete, completed = false, text }) => (
+// const todoLabel = ({ onEdit, onDelete, text }) => {
+//   let onSubmit = text.length === 0 ? onDelete : onEdit
+//   let label = this.editing ? (
+//     <input type="text" value={text} onSubmit={onEdit} />
+//   ) : (
+//     <label onClick={onEdit}>{" " + text + " "}</label>
+//   )
+// }
+
+const Todo = ({ onToggle, onEdit, onDelete, completed = false, text }) => (
   <li
-    // onClick={onEdit}
     style={{
       textDecoration: completed ? "line-through" : "none",
       color: completed ? "#888" : "#000",
     }}
   >
-    <input className="" type="checkbox" checked={completed} onChange={onToggle} />
-    {" " + text + " "}
-    <button className="" onClick={onDelete}>
-      x
-    </button>
+    <input type="checkbox" checked={completed} onChange={onToggle} />
+    {/* {todoLabel(onEdit, onDelete, text)} */}
+    <label onClick={onEdit}>{" " + text + " "}</label>
+    <button onClick={onDelete}>x</button>
   </li>
 )
 

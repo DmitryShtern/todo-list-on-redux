@@ -6,7 +6,6 @@ import {
   GET_COMPLETION,
   DELETE_TODO,
   DELETE_COMPLITED_TODOS,
-  // GET_ACTIVE_TODOS_COUNT,
 } from "../constants/todos"
 import { SET_VISIBILITY_FILTER } from "../constants/visibilityFilter"
 
@@ -15,7 +14,6 @@ let nextTodoId = 2
 export const addTodo = text => {
   return {
     type: ADD_TODO,
-    id: nextTodoId++,
     text,
   }
 }
@@ -42,7 +40,6 @@ export const getCompletion = () => {
 }
 
 export const toggleAllTodos = () => {
-  // todosCompletion = !todosCompletion
   return {
     type: TOGGLE_ALL_TODOS,
   }

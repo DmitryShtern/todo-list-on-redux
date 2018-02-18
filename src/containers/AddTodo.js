@@ -2,14 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { addTodo, getCompletion, toggleAllTodos } from "../actions"
 
-// const getCompletion = todos => {
-//   return !todos.some(todo => {
-//     return todo.completed === false
-//   })
-// }
-
 let AddTodo = ({ addTodo, completion, toggleAllTodos }) => {
-  // let AddTodo = ({ dispatch }) => {
   let input
 
   return (
@@ -20,14 +13,11 @@ let AddTodo = ({ addTodo, completion, toggleAllTodos }) => {
           if (!input.value.trim()) {
             return
           }
-
-          // addTodo(input.value)
           addTodo(input.value)
           input.value = ""
         }}
       >
-        <input type="checkbox" checked={completion} onChange={toggleAllTodos} />
-        {/* {console.log(todosCompletion)} */}
+        <input type="checkbox" onChange={toggleAllTodos} />
 
         <input
           ref={node => {
@@ -44,10 +34,7 @@ let AddTodo = ({ addTodo, completion, toggleAllTodos }) => {
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos,
     completion: getCompletion(),
-    // todosCompletion: getCompletion(state.todos),
-    // activeTodosCount: getTodosCount(state.todos),
   }
 }
 

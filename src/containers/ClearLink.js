@@ -1,15 +1,34 @@
+import React from "react"
 import { connect } from "react-redux"
 import { deleteComplitedTodos } from "../actions"
-import Link from "../components/Link"
 
-const getTodosCount = todos => {
-  return todos.filter(t => !t.completed).length
+const getActiveTodosCount = todos => {
+  return todos.filter(t => t.completed).length
+}
+
+let ClearLink = ({ activeTodosCount, deleteComplitedTodos }) => {
+  let clearLabel
+
+  if (activeTodosCount) {
+    clearLabel = "Clear complited"
+  }
+
+  return (
+    <a
+      href=""
+      onClick={e => {
+        e.preventDefault()
+        deleteComplitedTodos()
+      }}
+    >
+      {clearLabel}
+    </a>
+  )
 }
 
 const mapStateToProps = state => {
   return {
-    todos: state.todos,
-    activeTodosCount: getTodosCount(state.todos),
+    activeTodosCount: getActiveTodosCount(state.todos),
   }
 }
 
@@ -21,15 +40,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     deleteComplitedTodos: () => {
-//       ////
-//       dispatch(deleteComplitedTodos())
-//     },
-//   }
-// }
-
-const ClearLink = connect(mapStateToProps, mapDispatchToProps)(Link)
+ClearLink = connect(mapStateToProps, mapDispatchToProps)(ClearLink)
 
 export default ClearLink
