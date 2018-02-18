@@ -9,8 +9,6 @@ import {
 } from "../constants/todos"
 import { SET_VISIBILITY_FILTER } from "../constants/visibilityFilter"
 
-let nextTodoId = 2
-
 export const addTodo = text => {
   return {
     type: ADD_TODO,
@@ -18,11 +16,12 @@ export const addTodo = text => {
   }
 }
 
-export const editTodo = (id, text) => {
+export const editTodo = (id, text, editing) => {
   return {
     type: EDIT_TODO,
     id,
     text,
+    editing,
   }
 }
 

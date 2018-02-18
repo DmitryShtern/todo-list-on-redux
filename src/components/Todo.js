@@ -1,16 +1,19 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-// const todoLabel = ({ onEdit, onDelete, text }) => {
-//   let onSubmit = text.length === 0 ? onDelete : onEdit
-//   let label = this.editing ? (
-//     <input type="text" value={text} onSubmit={onEdit} />
+// const todoLabel = ({ onEdit, onDelete, text, editing }) => {
+//   let onSubmit = text === undefined || text.length === 0 ? onDelete : onEdit
+//   console.log("todoLabel: " + text)
+//   let label = editing ? (
+//     <input type="text" value={text} onBlur={onSubmit} />
 //   ) : (
-//     <label onClick={onEdit}>{" " + text + " "}</label>
+//     <label onDoubleClick={onEdit}>{" 1 " + text + " 2 "}</label>
 //   )
+
+//   return label
 // }
 
-const Todo = ({ onToggle, onEdit, onDelete, completed = false, text }) => (
+const Todo = ({ onToggle, onEdit, onDelete, completed = false, text, editing }) => (
   <li
     style={{
       textDecoration: completed ? "line-through" : "none",
@@ -18,8 +21,13 @@ const Todo = ({ onToggle, onEdit, onDelete, completed = false, text }) => (
     }}
   >
     <input type="checkbox" checked={completed} onChange={onToggle} />
-    {/* {todoLabel(onEdit, onDelete, text)} */}
-    <label onClick={onEdit}>{" " + text + " "}</label>
+    {/* {todoLabel(
+      (onEdit = { onEdit }),
+      (onDelete = { onDelete }),
+      (text = { text }),
+      (editing = { editing }),
+    )}  НЕ ПЕРЕДАЁТ ОБЪЕКТЫ */}
+    <label onDoubleClick={onEdit}>{" " + text + " "}</label>
     <button onClick={onDelete}>x</button>
   </li>
 )
@@ -30,6 +38,7 @@ Todo.propTypes = {
   onDelete: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
+  editing: PropTypes.bool.isRequired,
 }
 
 export default Todo

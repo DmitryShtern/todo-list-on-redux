@@ -12,11 +12,13 @@ const initialState = [
     id: 1,
     text: "New task",
     completed: false,
+    editing: false,
   },
   {
     id: 0,
     text: "Old complited task",
     completed: true,
+    editing: false,
   },
 ]
 
@@ -33,7 +35,10 @@ const todos = (state = initialState, action) => {
       ]
 
     case EDIT_TODO:
-      return state.map(todo => (todo.id === action.id ? { ...todo, text: action.text } : todo))
+      return state.map(
+        todo =>
+          todo.id === action.id ? { ...todo, text: action.text, editing: !todo.editing } : todo,
+      )
 
     case TOGGLE_TODO:
       return state.map(
