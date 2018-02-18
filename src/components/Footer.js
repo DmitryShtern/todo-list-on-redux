@@ -1,8 +1,5 @@
 import React from "react"
-import ClearLink from "../containers/ClearLink"
-import FilterLink from "../containers/FilterLink"
-import TodosCount from "../containers/TodosCount"
-
+import { TodosCount, FilterLink, ClearLink } from "../containers"
 import { SHOW_COMPLETED, SHOW_ACTIVE, SHOW_ALL } from "../constants/visibilityFilter"
 
 const style = {

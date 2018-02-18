@@ -3,7 +3,6 @@ import {
   EDIT_TODO,
   TOGGLE_TODO,
   TOGGLE_ALL_TODOS,
-  GET_COMPLETION,
   DELETE_TODO,
   DELETE_COMPLITED_TODOS,
 } from "../constants/todos"
@@ -29,12 +28,6 @@ export const toggleTodo = id => {
   return {
     type: TOGGLE_TODO,
     id,
-  }
-}
-
-export const getCompletion = () => {
-  return {
-    type: GET_COMPLETION,
   }
 }
 

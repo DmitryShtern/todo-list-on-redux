@@ -1,8 +1,8 @@
 import React from "react"
 import { connect } from "react-redux"
-import { addTodo, getCompletion, toggleAllTodos } from "../actions"
+import { addTodo, toggleAllTodos } from "../actions"
 
-let AddTodo = ({ addTodo, completion, toggleAllTodos }) => {
+let AddTodo = ({ addTodo, toggleAllTodos }) => {
   let input
 
   return (
@@ -33,19 +33,13 @@ let AddTodo = ({ addTodo, completion, toggleAllTodos }) => {
 }
 
 const mapStateToProps = state => {
-  return {
-    completion: getCompletion(),
-  }
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     addTodo: text => {
       dispatch(addTodo(text))
-    },
-
-    getCompletion: () => {
-      dispatch(getCompletion())
     },
 
     toggleAllTodos: () => {
