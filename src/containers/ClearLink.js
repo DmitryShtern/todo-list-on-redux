@@ -1,5 +1,5 @@
 import { connect } from "react-redux"
-import { getActiveTodosCount, deleteComplitedTodos } from "../actions"
+import { deleteComplitedTodos } from "../actions"
 import Link from "../components/Link"
 
 const getTodosCount = todos => {
@@ -15,10 +15,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getActiveTodosCount: () => {
-      dispatch(getActiveTodosCount())
-    },
-
     deleteComplitedTodos: () => {
       dispatch(deleteComplitedTodos())
     },

@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-const Todo = ({ onEdit, onToggle, onDelete, completed, text }) => (
+const Todo = ({ onEdit, onToggle, onDelete, completed = false, text }) => (
   <li
     // onClick={onEdit}
     style={{
